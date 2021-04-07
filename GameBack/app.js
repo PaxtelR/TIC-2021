@@ -10,7 +10,7 @@ require("dotenv-safe").config();
 //mongoose
 mongoose
   .connect(
-    "mongodb+srv://paxtel:Rafa2307@cluster0.gwizf.mongodb.net/TicGame?retryWrites=true&w=majority",
+    "mongodb+srv://paxtel:<senha>@cluster0.gwizf.mongodb.net/TicGame?retryWrites=true&w=majority",
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
