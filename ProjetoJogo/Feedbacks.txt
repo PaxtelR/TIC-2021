@@ -1,0 +1,15 @@
+- Sensitividade nao funciona, posso botar o numero que quiser que não faz diferença
+- performance muito boa, peguei uns 1500 fps
+- animação de recuo da arma devia fazer a ponta dela ir para cima tambem, e devia ser mais agressiva/forte
+- arma deveria estar mais perto da camera do jogador
+- gostaria de mais informações tipo tempo médio entre tiros, quantidade total de tiros acertados/dados/errados
+- o recuo poderia impactar tambem na câmera, levantando ela quando tu atira, mas isso pode ser uma opção
+muzzle flash (fogo que sai da arma) pode ser bem maior, mais forte e durar menos tempo
+- arrumar pra quando tu der um tiro e sair o som, não parar o som do ultimo tiro
+- SE TU PAUSA, O MOUSE SOME, E NÃO TEM O QUE FAZER (facil de arrumar e importantissimo)
+- Seria bom um botao pra reiniciar direto, tipo R
+- gostaria de mais modos de jogo, mais customização ao tamanho dos targets,
+- o quadradinho que aparece quando tu atira deveria durar menos, pra não ficarem atrapalhando. E deveriam sumir de maneira sutil, como diminuindo até sumir ou ficando mais transparente
+- Seria bacana tbm se tu conseguisse colocar a posição da arma.
+- botar tipo efeitos sonoros pra quanto mais acerta (Tipo valorant)
+- Menos bolinhas por vez
