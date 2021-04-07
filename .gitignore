@@ -3,12 +3,12 @@
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
 /ProjetoJogo/Projeto/[Ll]ibrary/
-/ProjetoJogo/Projeto//[Tt]emp/
-/ProjetoJogo/Projeto//[Oo]bj/
-/ProjetoJogo/Projeto//[Bb]uild/
-/ProjetoJogo/Projeto//[Bb]uilds/
-/ProjetoJogo/Projeto//[Ll]ogs/
-/ProjetoJogo/Projeto//[Mm]emoryCaptures/
+/ProjetoJogo/Projeto/[Tt]emp/
+/ProjetoJogo/Projeto/[Oo]bj/
+/ProjetoJogo/Projeto/[Bb]uild/
+/ProjetoJogo/Projeto/[Bb]uilds/
+/ProjetoJogo/Projeto/[Ll]ogs/
+/ProjetoJogo/Projeto/[Mm]emoryCaptures/
 node_modules/
 /[Dd]ocumentos/
 
