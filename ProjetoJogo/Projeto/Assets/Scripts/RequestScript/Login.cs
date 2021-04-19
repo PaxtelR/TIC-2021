@@ -2,30 +2,69 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Login : MonoBehaviour
 {
-    void Start()
+    public LoginMenu menuScript;
+    public Modal modal;
+
+    [Space(2)]
+    [Header("Campos")]
+    public TMP_InputField _email;
+    public TMP_InputField _senha;
+    public Toggle remember;
+
+    private void Start()
     {
-        StartCoroutine(Upload());
+        string token = PlayerPrefs.GetString("token", "");
+        bool rememberB = MenuScript.intToBool(PlayerPrefs.GetInt("remember", 0));
+
+        if (token != "" && remember == true)
+        {
+            Debug.Log(1);
+            StartCoroutine(ApiConnect.SendDataWithAuth("/users/loginToken", new modelLogin(), token, LoginCallBack));
+        }
     }
 
-    IEnumerator Upload()
+    public void LoginGetDataAndSend()
     {
-        List<IMultipartFormSection> formData = new List<IMultipartFormSection>();
-        formData.Add(new MultipartFormwDataSection("field1=foo&field2=bar"));
-        formData.Add(new MultipartFormFileSection("my file data", "myfile.txt"));
+        string email = _email.text;
+        string senha = _senha.text;
 
-        UnityWebRequest www = UnityWebRequest.Post("http://localhost:3000/user/login", formData);
-        yield return www.SendWebRequest();
-
-        if (www.result != UnityWebRequest.Result.Success)
+        if (email != "" & senha != "")
         {
-            Debug.Log(www.error);
+            menuScript.ActiveLoading();
+            StartCoroutine(ApiConnect.SendDataNoAuth("/users/login", new modelLogin(email, senha), LoginCallBack));
         }
         else
         {
-            Debug.Log("Form upload complete!");
+            if (email == "")
+            {
+                modal.SetModal("E-mail inválido");
+            }
+            else if (senha == "")
+            {
+                modal.SetModal("Senha inválida");
+            }
+        }
+    }
+
+    void LoginCallBack(string response, bool success)
+    {
+        menuScript.DesactiveLoading();
+        if (!success)
+        {
+            msgError resposta = JsonUtility.FromJson<msgError>(response);
+            modal.SetModal(resposta.msg);
+        }
+        else
+        {
+            bool _remember = remember.isOn;
+            PlayerPrefs.SetInt("remember", MenuScript.boolToInt(_remember));
+            SceneManager.LoadScene(1);
         }
     }
 }

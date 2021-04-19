@@ -7,6 +7,7 @@ using TMPro;
 
 public class MenuScript : MonoBehaviour
 {
+
     public Slider volumeSlider;
     public TMP_InputField sensInput;
     public Toggle showImpact;
@@ -18,7 +19,6 @@ public class MenuScript : MonoBehaviour
         sensInput.text = PlayerPrefs.GetFloat("sense", 1f).ToString();
         volumeSlider.value = PlayerPrefs.GetFloat("volume", 0.5f);
         showImpact.isOn = intToBool(PlayerPrefs.GetInt("showImpact", 1));
-
     }
 
     public void SetSens()
@@ -33,7 +33,14 @@ public class MenuScript : MonoBehaviour
 
     public void Play()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
+    }
+
+    public void Logout()
+    {
+        PlayerPrefs.SetInt("remember", MenuScript.boolToInt(false));
+        PlayerPrefs.SetString("token", "");
+        SceneManager.LoadScene(0);
     }
 
     public void SetImpact()

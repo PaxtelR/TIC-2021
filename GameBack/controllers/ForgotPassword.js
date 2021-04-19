@@ -70,7 +70,7 @@ module.exports = {
         const code = generateCode();
         await saveCode(userSearch.user, code, res); // Tratar resposta se falhar
         const emailResponse = await Email.ForgotPass(userSearch.user, code); // Tratar resposta se falhar
-        if (emailResponse?.messageId) {
+        if (emailResponse.messageId) {
           return res.json({
             success: true,
             msg: "E-mail com link para alterar a senha foi enviado",

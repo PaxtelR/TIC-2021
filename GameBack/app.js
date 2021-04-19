@@ -3,9 +3,18 @@ const mongoose = require("mongoose");
 const router = express.Router();
 const app = express();
 const expressEjsLayout = require("express-ejs-layouts");
+var http = require("http");
+var https = require("https");
 const flash = require("connect-flash");
 const session = require("express-session");
+const rateLimit = require("express-rate-limit");
+
 require("dotenv-safe").config();
+
+const limiter = rateLimit({
+  windowMs: 5 * 60 * 1000, // 5 minutes
+  max: 100, // limit each IP to 100 requests per windowMs
+});
 
 //mongoose
 mongoose
@@ -27,6 +36,8 @@ app.set("view engine", "ejs");
 app.use(express.json());
 //app.use(express.urlencoded({ extended: false }));
 //express session
+app.set("trust proxy", 1);
+app.use(limiter);
 app.use(
   session({
     secret: "secret",
@@ -46,7 +57,7 @@ app.use((req, res, next) => {
 app.use("/", require("./routes/index"));
 app.use("/users", require("./routes/users"));
 app.use("/checks", require("./routes/checks"));
-
-app.listen(3000, function () {
+http.createServer(app);
+app.listen(8080, function () {
   console.log("Server aberto");
 });

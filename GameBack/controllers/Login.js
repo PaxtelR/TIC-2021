@@ -48,4 +48,21 @@ module.exports = {
     }
     res.status(500).json({ msg: userSearch ? userSearch.msg : "Erro" });
   },
+
+  async loginToken(req, res) {
+    const userSearch = await User.findOne({ _id: req.userId });
+    if (userSearch) {
+      //auth ok
+      const id = userSearch.id;
+      const token = jwt.sign({ id }, process.env.SECRET, {
+        expiresIn: "1d", // expires in 5min
+      });
+      return res.json({
+        auth: true,
+        token: token,
+        username: userSearch.username,
+      });
+    }
+    res.status(500).json({ msg: userSearch ? userSearch.msg : "Erro" });
+  },
 };

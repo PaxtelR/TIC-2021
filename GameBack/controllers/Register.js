@@ -15,7 +15,7 @@ module.exports = {
     }
     //check if match
     if (password !== password2) {
-      errors.push({ msg: "As senhas não conferem" });
+      errors.push({ msg: "As senhas não são iguais" });
     }
 
     //check if password is more than 6 characters
