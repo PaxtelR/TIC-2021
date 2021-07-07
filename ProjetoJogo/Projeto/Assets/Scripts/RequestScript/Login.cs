@@ -25,7 +25,7 @@ public class Login : MonoBehaviour
         if (token != "" && remember == true)
         {
             Debug.Log(1);
-            StartCoroutine(ApiConnect.SendDataWithAuth("/users/loginToken", new modelLogin(), token, LoginCallBack));
+            StartCoroutine(ApiConnect.SendDataWithAuth("/users/loginToken", new modelLogin(), LoginCallBack));
         }
     }
 

@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 [SerializeField]
 public static class ApiConnect
 {
-    static string apiURL = "http://mia.paxsoft.com.br";
+    static string apiURL = "http://mai.paxsoft.com.br"; //"http://127.0.0.1:8080";
 
     public static IEnumerator SendDataNoAuth(string endpoin, modelRequest data, System.Action<string, bool> callback)
     {
@@ -33,9 +33,9 @@ public static class ApiConnect
         }
     }
 
-    public static IEnumerator SendDataWithAuth(string endpoin, modelRequest data, string token, System.Action<string, bool> callback)
+    public static IEnumerator SendDataWithAuth(string endpoin, modelRequest data, System.Action<string, bool> callback)
     {
-
+        string token = PlayerPrefs.GetString("token");
         string jsonToSend = JsonUtility.ToJson(data);
         UnityWebRequest uwr = UnityWebRequest.Post($"{apiURL}{endpoin}", "");
         uwr.uploadHandler = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(jsonToSend));

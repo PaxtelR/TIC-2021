@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class modelRequest
 {
@@ -21,4 +22,15 @@ public class modelRequest
 public class msgError
 {
     public string msg;
+}
+
+public class ButtomModel
+{
+    public string text;
+    public UnityAction onClick;
+    public ButtomModel(string texto, UnityAction function)
+    {
+        text = texto;
+        onClick = function;
+    }
 }

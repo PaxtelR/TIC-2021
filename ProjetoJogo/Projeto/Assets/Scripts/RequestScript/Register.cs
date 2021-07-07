@@ -56,7 +56,7 @@ public class Register : MonoBehaviour
         else
         {
             menuScript.ActiveLogin();
-            modal.SetModal("Usuario registrado com sucesso.");
+            modal.SetModal("Seja bem-vindo Paxtel! Meu nome é Mai, serei sua instrutora. Vamos dar o nosso melhor!", new ButtomModel("Vamos", modal.Close));
         }
     }
 }

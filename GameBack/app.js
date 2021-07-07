@@ -2,13 +2,11 @@ const express = require("express");
 const mongoose = require("mongoose");
 const router = express.Router();
 const app = express();
-const expressEjsLayout = require("express-ejs-layouts");
 var http = require("http");
 var https = require("https");
 const flash = require("connect-flash");
 const session = require("express-session");
 const rateLimit = require("express-rate-limit");
-
 require("dotenv-safe").config();
 
 const limiter = rateLimit({
@@ -18,14 +16,11 @@ const limiter = rateLimit({
 
 //mongoose
 mongoose
-  .connect(
-    "mongodb+srv://paxtel:<senha>@cluster0.gwizf.mongodb.net/TicGame?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
-  .then(() => console.log("connected"))
+  .connect(process.env.BD_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("Conectou ao BD"))
   .catch((err) => console.log(err));
 mongoose.set("useFindAndModify", false);
 //EJS
@@ -47,16 +42,9 @@ app.use(
 );
 //use flash
 app.use(flash());
-app.use((req, res, next) => {
-  res.locals.success_msg = req.flash("success_msg");
-  res.locals.error_msg = req.flash("error_msg");
-  res.locals.error = req.flash("error");
-  next();
-});
 //Routes
-app.use("/", require("./routes/index"));
 app.use("/users", require("./routes/users"));
-app.use("/checks", require("./routes/checks"));
+app.use("/report", require("./routes/report"));
 http.createServer(app);
 app.listen(8080, function () {
   console.log("Server aberto");

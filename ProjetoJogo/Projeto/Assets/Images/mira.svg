@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1774" height="1684" viewBox="0 0 1774 1684">
+  <defs>
+    <clipPath id="clip-mira">
+      <rect width="1774" height="1684"/>
+    </clipPath>
+  </defs>
+  <g id="mira" clip-path="url(#clip-mira)">
+    <g id="Grupo_11" data-name="Grupo 11" transform="translate(-8437 2081)">
+      <rect id="Retângulo_18" data-name="Retângulo 18" width="200" height="735" transform="translate(9957.789 -1994.211) rotate(45)" fill="#b97bff"/>
+      <rect id="Retângulo_19" data-name="Retângulo 19" width="200" height="735" transform="translate(9084.513 -1120.934) rotate(45)" fill="#b97bff"/>
+      <circle id="Elipse_10" data-name="Elipse 10" cx="100" cy="100" r="100" transform="translate(9332 -1368.421) rotate(45)" fill="#b97bff"/>
+      <rect id="Retângulo_20" data-name="Retângulo 20" width="200" height="735" transform="translate(10099.564 -600.857) rotate(135)" fill="#b97bff"/>
+      <rect id="Retângulo_21" data-name="Retângulo 21" width="200" height="735" transform="translate(9225.58 -1474.841) rotate(135)" fill="#b97bff"/>
+    </g>
+  </g>
+</svg>

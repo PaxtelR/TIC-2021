@@ -1,7 +1,6 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
-const User = require("../models/user");
 const Login = require("../controllers/Login");
 const Register = require("../controllers/Register");
 const ForgotPassword = require("../controllers/ForgotPassword");
@@ -11,9 +10,6 @@ router.post("/login", Login.login);
 router.post("/loginToken", verifyJWT, Login.loginToken);
 
 router.post("/register", Register.register);
-router.get("/register", (req, res) => {
-  res.render("register");
-});
 
 router.get("/logout", (req, res) => {
   res.json({ auth: false, token: null });

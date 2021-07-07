@@ -16,24 +16,22 @@ public class FPS_Shot : MonoBehaviour
     public GameObject hitMarkObject;
     public bool showImpact;
     public GridShotController gridController;
-    public TextMeshProUGUI precisionText;
+    public TrainerRelatorio treinoScript;
 
     public float fireRate = 0.1f;
 
     bool canShot = true;
     int previusIndex = 0;
 
-    int tiros;
-    int acertos;
-    const string display = "Precisão: {0}%";
-
     // Start is called before the first frame update
     void Start()
     {
-        tiros = 0;
-        acertos = 0;
         shotSound.volume = PlayerPrefs.GetFloat("volume", 0.5f);
-        AttPrecisionText();
+        canShot = false;
+    }
+    public void setCanShot(bool value)
+    {
+        canShot = value;
     }
 
     // Update is called once per frame
@@ -54,28 +52,32 @@ public class FPS_Shot : MonoBehaviour
     {
         int layerMask = ~(1 << 6);
         canShot = false;
-        tiros++;
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
             if (gridController.Hitball(hit.transform.gameObject))
             {
-                acertos++;
+                treinoScript.shot(true);
+            }
+            else
+            {
+                treinoScript.shot(false);
             }
             if (MenuScript.intToBool(PlayerPrefs.GetInt("showImpact", 1)))
             {
                 Instantiate(hitMarkObject, hit.point, Quaternion.identity);
             }
+
         }
         else
         {
+            treinoScript.shot(false);
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
         }
         muzzle.Play();
         DoShotSound();
         anim.DoAnimation();
-        AttPrecisionText();
 
 
         yield return new WaitForSecondsRealtime(fireRate);
@@ -96,9 +98,5 @@ public class FPS_Shot : MonoBehaviour
     }
 
 
-    void AttPrecisionText()
-    {
-        float a = (float)acertos / tiros;
-        precisionText.text = string.Format(display, a * 100);
-    }
+
 }

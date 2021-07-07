@@ -23,11 +23,6 @@ public class GridShotController : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-
-    }
-
     void ActiveRandomBall()
     {
         int index;

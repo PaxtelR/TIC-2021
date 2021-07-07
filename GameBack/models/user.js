@@ -16,6 +16,16 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  lastLogin: {
+    type: Date,
+  },
+  banned: {
+    type: Boolean,
+    default: false,
+  },
+  banEndDate: {
+    type: Date,
+  },
 });
 const User = mongoose.model("User", UserSchema);
 

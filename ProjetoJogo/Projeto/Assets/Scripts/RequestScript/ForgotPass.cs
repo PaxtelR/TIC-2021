@@ -40,7 +40,7 @@ public class ForgotPass : MonoBehaviour
         else
         {
             menuScript.ActiveLogin();
-            modal.SetModal(response);
+            modal.SetModal("Eiii! que desatenção... Te enviei um e-mail, veja se recebeu. Recupere sua conta logo, quero treinar com você.", new ButtomModel("Vamos", menuScript.ActiveLogin));
         }
     }
 }
