@@ -1,9 +1,9 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
-const Login = require("../controllers/Login");
-const Register = require("../controllers/Register");
-const ForgotPassword = require("../controllers/ForgotPassword");
+const Login = require("../controllers/Users/Login");
+const Register = require("../controllers/Users/Register");
+const ForgotPassword = require("../controllers/Users/ForgotPassword");
 require("dotenv-safe").config();
 
 router.post("/login", Login.login);

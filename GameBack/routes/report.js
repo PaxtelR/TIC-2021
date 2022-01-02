@@ -2,7 +2,7 @@ const express = require("express");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
 require("dotenv-safe").config();
-const ReportGridShot = require("../controllers/ReportGridShot");
+const ReportGridShot = require("../controllers/Reports/ReportGridShot");
 
 router.post("/reportGridShot", verifyJWT, ReportGridShot.reportGridShot);
 

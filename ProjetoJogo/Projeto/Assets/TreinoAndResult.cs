@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class TreinoAndResult : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class TreinoAndResult : MonoBehaviour
     {
         treino.SetActive(true);
         resultado.SetActive(false);
+        int a = NavMesh.AllAreas;
     }
 
     public void ActiveResultado(modelRelatorioGridShot relatorio)

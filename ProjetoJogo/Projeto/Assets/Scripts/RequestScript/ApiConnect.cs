@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 [SerializeField]
 public static class ApiConnect
 {
-    static string apiURL = "http://mai.paxsoft.com.br"; //"http://127.0.0.1:8080";
+    static string apiURL = "http://127.0.0.1:8080"; //"http://mai.paxsoft.com.br:8080"; //"http://127.0.0.1:8080";
 
     public static IEnumerator SendDataNoAuth(string endpoin, modelRequest data, System.Action<string, bool> callback)
     {
